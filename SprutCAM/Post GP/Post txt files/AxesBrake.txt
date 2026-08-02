@@ -1,0 +1,21 @@
+program AxesBrake
+  if _cycleInWork <> 3 then begin
+    if Cmd.Ptr["Axes(AxisCPos)"] <> 0 then begin
+      if Cmd.Int["Axes(AxisCPos).BrakeState"] = 1 then begin
+        if _axisCBrakeOn <> 0 then MBrake = _axisCBrakeOn    ! On
+      end
+      else begin
+        if _axisCBrakeOff <> 0 then MBrake = _axisCBrakeOff    ! Off
+      end
+    end
+    if Cmd.Ptr["Axes(AxisC2Pos)"] <> 0 then begin
+      if Cmd.Int["Axes(AxisC2Pos).BrakeState"] = 1 then begin
+        if _axisC2BrakeOn <> 0 then MBrake = _axisC2BrakeOn
+      end
+      else begin
+        if _axisC2BrakeOff <> 0 then MBrake = _axisC2BrakeOff
+      end
+    end
+    if MBrake <> MBrake@ then OutBlock
+  end
+end

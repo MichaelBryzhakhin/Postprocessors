@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<Project ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <RestoreSuccess Condition=" '$(RestoreSuccess)' == '' ">True</RestoreSuccess>
+    <RestoreTool Condition=" '$(RestoreTool)' == '' ">NuGet</RestoreTool>
+    <ProjectAssetsFile Condition=" '$(ProjectAssetsFile)' == '' ">$(MSBuildThisFileDirectory)project.assets.json</ProjectAssetsFile>
+    <NuGetPackageRoot Condition=" '$(NuGetPackageRoot)' == '' ">$(UserProfile)\.nuget\packages\</NuGetPackageRoot>
+    <NuGetPackageFolders Condition=" '$(NuGetPackageFolders)' == '' ">C:\Users\bryzhakhin_me\.nuget\packages\</NuGetPackageFolders>
+    <NuGetProjectStyle Condition=" '$(NuGetProjectStyle)' == '' ">PackageReference</NuGetProjectStyle>
+    <NuGetToolVersion Condition=" '$(NuGetToolVersion)' == '' ">6.14.0</NuGetToolVersion>
+  </PropertyGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <SourceRoot Include="C:\Users\bryzhakhin_me\.nuget\packages\" />
+  </ItemGroup>
+  <ItemGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
+    <Content Include="$(NuGetPackageRoot)spruttechnology.dotnetpostprocessing.sdk\18.2.0\contentFiles\any\net6.0\DotnetPostprocessing.SDK.stbuildresult.json" Condition="Exists('$(NuGetPackageRoot)spruttechnology.dotnetpostprocessing.sdk\18.2.0\contentFiles\any\net6.0\DotnetPostprocessing.SDK.stbuildresult.json')">
+      <NuGetPackageId>SprutTechnology.DotnetPostprocessing.SDK</NuGetPackageId>
+      <NuGetPackageVersion>18.2.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>DotnetPostprocessing.SDK.stbuildresult.json</TargetPath>
+      <Private>True</Private>
+      <Link>DotnetPostprocessing.SDK.stbuildresult.json</Link>
+    </Content>
+    <Content Include="$(NuGetPackageRoot)spruttechnology.dotnetpostprocessing.sdk\18.2.0\contentFiles\any\net6.0\DotnetPostprocessing.SDK.xml" Condition="Exists('$(NuGetPackageRoot)spruttechnology.dotnetpostprocessing.sdk\18.2.0\contentFiles\any\net6.0\DotnetPostprocessing.SDK.xml')">
+      <NuGetPackageId>SprutTechnology.DotnetPostprocessing.SDK</NuGetPackageId>
+      <NuGetPackageVersion>18.2.0</NuGetPackageVersion>
+      <NuGetItemType>Content</NuGetItemType>
+      <Pack>false</Pack>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <TargetPath>DotnetPostprocessing.SDK.xml</TargetPath>
+      <Private>True</Private>
+      <Link>DotnetPostprocessing.SDK.xml</Link>
+    </Content>
+  </ItemGroup>
+</Project>

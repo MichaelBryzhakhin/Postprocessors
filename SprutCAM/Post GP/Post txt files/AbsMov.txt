@@ -1,0 +1,105 @@
+program AbsMov
+  1:    ! Jump point (used at polar interpolation)
+  _inputCode[1] = Cmd.Code
+  Tang_: Real
+  AxisCValue_: Real
+  Repeat_: Integer
+  CurX_: Real; CurX_ = CLD.X
+  CurY_: Real; CurY_ = CLD.Y
+  
+  if _moveIgnore = 0 then begin
+    case _stateOperation of
+    1: begin  ! milling
+      if _polarInterp = 1 then begin
+        if ((_previousX < 0 and CurX_ > 0) or (_previousX > 0 and CurX_ < 0)) and (GInterp = 1) and (Repeat_ = 0) then begin
+          CurX_ = 0
+          Repeat_ = 1
+        end
+        else if ((_previousY < 0 and CurY_ > 0) or (_previousY > 0 and CurY_ < 0)) and (GInterp = 1) and (Repeat_ = 0) then begin
+          CurY_ = 0
+          Repeat_ = 1
+        end
+        if CurX_ <> 0 then Tang_ = abs(CurY_/CurX_)
+        else Tang_ = abs(CurY_/1)
+        AxisCValue_ = Round(Atn(Tang_),3)*_axisCCoef
+        Call AxisCPolarCompens(CurX_, CurY_, AxisCValue_)            ! Axis C compensation while polar interp is active
+        if _multiAxisInWork = "Axes(AxisCPos)" then begin
+          while AxisCValue_ < _axisCMin do
+            AxisCValue_ = AxisCValue_ + (_pi2*_rad2Deg)
+          while AxisCValue_ > _axisCMax do
+            AxisCValue_ = AxisCValue_ - (_pi2*_rad2Deg)
+          C = AxisCValue_
+        end
+        else begin
+          while AxisCValue_ < _axisC2Min do
+            AxisCValue_ = AxisCValue_ + (_pi2*_rad2Deg)
+          while AxisCValue_ > _axisC2Max do
+            AxisCValue_ = AxisCValue_ - (_pi2*_rad2Deg)
+          C2 = AxisCValue_
+        end
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          if _polarInterpIgnore = 1 then      ! when G12.1 is not printed in prog
+            X = Sqr(CurX_^2 + CurY_^2)*_coordXScheme
+          else begin
+            X = Sqr(CurX_^2 + CurY_^2)
+          end
+          Z = CLD.Z
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          if _polarInterpIgnore = 1 then      ! when G12.1 is not printed in prog
+            X2 = Sqr(CurX_^2 + CurY_^2)*_coordXScheme
+          else begin
+            X2 = Sqr(CurX_^2 + CurY_^2)
+          end
+          Z2 = CLD.Z
+        end
+        if Repeat_ = 1 then begin
+          OutBlock
+          Repeat_ = -1
+          Jump 1
+        end
+        else Repeat_ = 0
+      end
+      else if _cylinderInterp = 1 then begin
+        !C = Round(180*Y/CylInterp/3.141592, 3)
+      end
+      else begin
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          if _machineKinematic = 2 then Y = CLD.Y
+          else if CLD.Y <> 0 then Call InputMessages
+          X = (CLD.X)*_coordXScheme
+          Z = CLD.Z
+        end
+        if _operationRevolverID = _turretSpindlRevID then begin
+          if _machineKinematic = 2 then Y2 = CLD.Y
+          else if CLD.Y <> 0 then Call InputMessages
+          X2 = (CLD.X)*_coordXScheme
+          Z2 = CLD.Z
+        end
+      end
+      end
+    2: begin  ! turning
+      if _cycleInWork = 1 and _subprogInWork = 1 then begin
+        if NextCode = CodeOfCmd("PPFun") and BlockNum = BlockNum@ then
+          BlockNum = BlockNum + 1
+      end
+      if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+        X = (CLD.X)*_coordXScheme
+        Z = CLD.Z
+      end
+      else if _operationRevolverID = _turretSpindlRevID then begin
+        X2 = (CLD.X)*_coordXScheme
+        Z2 = CLD.Z
+      end
+      end
+    end
+    3: begin  ! auxiliary
+      if _operationRevolverID = _subSpindlRevID then begin
+        W = CLD.Z
+      end
+    end
+    OutBlock
+  end
+  _previousX = CLD.X
+  _previousY = CLD.Y
+end

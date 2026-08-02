@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <OutDir>bin\Debug\</OutDir>
+    <PublishDir>bin\Debug\</PublishDir>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>annotations</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Settings.xml" />
+    <PackageReference Include="SprutTechnology.DotnetPostprocessing.SDK" Version="18.2.0" />
+    <Using Include="System" />
+    <Using Include="System.Text" />
+    <Using Include="System.Diagnostics" />
+    <Using Include="GeneralUtils.STDefLib" />
+    <Using Include="GeneralUtils.STDefLib.STDef" Static="true" />
+    <Using Include="Geometry.VecMatrLib" />
+    <Using Include="Geometry.VecMatrLib.VML" Static="true" />
+    <Using Include="DotnetPostprocessing.SDK" />
+    <Using Include="DotnetPostprocessing.SDK.CommonFuncs" Static="true" />
+  </ItemGroup>
+
+</Project>

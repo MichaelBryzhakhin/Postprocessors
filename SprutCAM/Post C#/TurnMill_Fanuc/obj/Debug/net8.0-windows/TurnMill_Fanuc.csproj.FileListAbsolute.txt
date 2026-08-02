@@ -1,0 +1,14 @@
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\bin\Debug\DotnetPostprocessing.SDK.stbuildresult.json
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\bin\Debug\DotnetPostprocessing.SDK.xml
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\bin\Debug\TurnMill_Fanuc.deps.json
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\bin\Debug\TurnMill_Fanuc.dll
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\bin\Debug\TurnMill_Fanuc.pdb
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.csproj.AssemblyReference.cache
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.GeneratedMSBuildEditorConfig.editorconfig
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.AssemblyInfoInputs.cache
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.AssemblyInfo.cs
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.csproj.CoreCompileInputs.cache
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.dll
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\refint\TurnMill_Fanuc.dll
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\TurnMill_Fanuc.pdb
+C:\MyPostprocessors\SprutCAM\C#\_Templates\TurnMill_Fanuc\obj\Debug\net8.0-windows\ref\TurnMill_Fanuc.dll

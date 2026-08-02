@@ -1,0 +1,26 @@
+{
+  "build_results": {
+    "build_date": "2024-09-24T18:15:54.7336314+03:00",
+    "build_system_version": "2.0.1-rc.1+243f40d1843f3d62e130b4921674450e391caece",
+    "ci_pipeline_name": "SprutCAM/ST18/master",
+    "ci_pipeline_build_id": "2",
+    "user_name": "NT AUTHORITY\\SYSTEM",
+    "variant": {
+      "name": "Release_x64",
+      "configuration": "Release",
+      "platform": "x64",
+      "st_platform": "Bin64"
+    },
+    "versions": {
+      "SprutTechnology.DotnetPostprocessing.SDK": "18.2.0"
+    },
+    "dependencies": {
+      "GeneralUtils.STDefLib.csproj": "00E3F414047E7ED8468141574F612A7DA61C37CFD3D80E818B14E32BC0D553E6",
+      "Geometry.VecMatrLib.csproj": "CCF69FF204BB3E93CFB41FE4F6234948CEBDCF11C9CFC49C503453E81647E503",
+      "STLogger.dproj": "D9E96E0AD588C7583B3C25B4A4653EF05AF9DC076348D091735F97311914D254",
+      "STDefs.dproj": "53AF340AFAE4541815ADD26B0D52E5BDC9B877FA2E25C4A4768D867A59A72FDA",
+      "STTypes.idl": "56EE898471D39D16220CF5C31094FE81073EFD7684C93208313AB4FF89CEFC88"
+    },
+    "builder_version": "net6.0"
+  }
+}

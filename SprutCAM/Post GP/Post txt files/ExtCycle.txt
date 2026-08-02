@@ -1,0 +1,283 @@
+program ExtCycle
+  _inputCode[1] = Cmd.Code
+  TPStart_: String
+  TPEnd_: String
+  StartPX_: Real
+  StartPZ_: Real
+  TGn_: String
+  TUW_: String
+  TUX_: String
+  TWZ_: String
+  TUi_: String
+  TWk_: String
+  TRe_: String
+  TRd_: String
+  TUu_: String
+  TWw_: String
+  TFf_: String
+  TFl_: String
+  TPi_: String
+  TQk_: String
+  TPmra_: String
+  TQd_: String
+  TQdm_: String
+  Tr_: Real
+  TRi_: String
+  TPk_: string
+
+  case CLD.SubCmd of
+  52: begin   ! ExtCycle call
+    if CLD.SubType = 404 then begin
+      if Copy(_operationRevolverID,1,4) = _headSpindlRevID then
+        X = CLD[13]*_coordXScheme
+      else if _operationRevolverID = _turretSpindlRevID then
+        X2 = CLD[13]*_coordXScheme
+      OutBlock
+    end
+    end
+  71: begin   ! ExtCycle on
+    case CLD.SubType of
+    400,401,402,403,404: begin    ! turning
+      _cycleInWork = 1
+      TPStart_ = NCSub.StartLabel(CLD[3]) ! First block number of contour
+      TPEnd_ = NCSub.EndLabel(CLD[3])   ! Last block number of contour
+      if CLD.SubType = 400 then begin   ! G70/73 (72/75)
+        if (CLD[4] = 1) and (CLD[7] = 0) and (CLD[8] = 0) then begin    ! G70 (72)
+          if _fanucCodeSistem = 3 then TGn_ = Str(72)
+          else TGn_ = Str(70)
+          FormBlock
+          OutPut OutStr$ + "G" + TGn_ + " P" + TPStart_ + " Q" + TPEnd_
+        end
+        else begin    ! G73 (75)
+          if _fanucCodeSistem = 3 then TGn_ = Str(75)
+          else TGn_ = Str(73)
+          TUi_ = Str(CLD[6])
+          TWk_ = Str(CLD[5])
+          TRd_ = Str(CLD[4])
+          TUu_ = Str(CLD[8]*_coordXScheme)
+          TWw_ = Str(CLD[7])
+          TFf_ = Str(FFeed)
+          FormBlock
+          OutPut OutStr$ + "G" + TGn_ + " U" + TUi_ + " W" + TWk_ + " R" + TRd_
+          FormBlock
+          OutPut OutStr$ + "G" + TGn_ + " P" + TPStart_ + " Q" + TPEnd_ + " U" + TUu_ + " W" + TWw_ + " F" + TFf_
+        end
+        NCSub.Output(CLD[3])
+        if CLD[12] = 1 then begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(72)
+          else TGn_ = Str(70)
+          FormBlock
+          OutPut OutStr$ + "G" + TGn_ + " P" + TPStart_ + " Q" + TPEnd_
+        end
+      end
+      else if CLD.SubType = 401 then begin    ! G71/72 (73/74)
+        TUi_ = Str(CLD[4])
+        TWk_ = Str(CLD[4])
+        TRe_ = Str(CLD[9])
+        TUu_ = Str(CLD[8]*_coordXScheme)
+        TWw_ = Str(CLD[7])
+        TFf_ = Str(FFeed)
+        if CLD[5] = 0 then begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(73)
+          else TGn_ = Str(71)
+          TUW_ = "U"
+        end
+        else begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(74)
+          else TGn_ = Str(72)
+          TUW_ = "W"
+        end
+        FormBlock
+        Output OutStr$ + "G" + TGn_ + " " + TUW_ + TUi_ + " R" + TRe_
+        FormBlock
+        Output OutStr$ + "G" + TGn_ + " P" + TPStart_ + " Q" + TPEnd_ + " U" + TUu_ + " W" + TWw_ + " F" + TFf_
+        NCSub.Output(CLD[3])
+        if CLD[12] = 1 then begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(72)
+          else TGn_ = Str(70)
+          FormBlock
+          OutPut OutStr$ + "G" + TGn_ + " P" + TPStart_ + " Q" + TPEnd_
+        end
+      end
+      else if CLD.SubType = 402 then begin    ! G74/75 (76/77)
+        TFf_ = Str(FFeed)
+        if CLD[3] = 0 then begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(77)
+          else TGn_ = Str(75)
+          TRe_ = Str(CLD[9])
+          TUu_ = Str(CLD[5]*_coordXScheme)
+          TWw_ = Str(CLD[4])
+          TPi_ = Str(CLD[7])
+          TQk_ = Str(CLD[6])
+        end
+        else begin
+          if _fanucCodeSistem = 3 then TGn_ = Str(76)
+          else TGn_ = Str(74)
+          TRe_ = Str(CLD[8])
+          TUu_ = Str(CLD[4]*_coordXScheme)
+          TWw_ = Str(CLD[5])
+          TPi_ = Str(CLD[6])
+          TQk_ = Str(CLD[7])
+        end
+        FormBlock
+        OutPut OutStr$ + "G" + TGn_ + " R" + TRe_
+        FormBlock
+        Output OutStr$ + "G" + TGn_ + " U" + TUu_ + " W" + TWw_ + " P" + TPi_ + " Q" + TQk_ + " F" + TFf_
+      end
+      else if CLD.SubType = 403 then begin    ! G76 (78)
+        StartPX_ = CLD[16]*_coordXScheme
+        StartPZ_ = CLD[6]
+        TGn_ = Str(76)
+        TFl_ = Str(CLD[23])
+        TQdm_ = Str(CLD[31])
+        TQd_ = Str(CLD[27])
+        TRd_ = Str(CLD[29])
+        if CLD[5] <> 0 then TRi_ = Str(CLD[13]-CLD[9])
+        else TRi_ = Str(0)
+        TPk_ = Str(CLD[18])
+        Tr_ = Round(10*CLD[14]/CLD[23])
+        if Tr_ < 0 then Tr_ = 0
+        else if Tr_ > 99 then Tr_ = 99
+        if CLD[30] < 10 then TPmra_ = "0" + Str(CLD[30])
+        else TPmra_ = Str(CLD[30])
+        if Tr_ < 10 then TPmra_ = TPmra_ + "0" + Str(Tr_)
+        else TPmra_ = TPmra_ + Str(Tr_)
+        if CLD[19] < 10 then TPmra_ = TPmra_ + "0" + Str(CLD[19])
+        else TPmra_ = TPmra_ + Str(CLD[19])
+        if _fanucCodeSistem = 1 then begin    ! fanuc code A
+          TUX_ = "U"
+          TWZ_ = "W"
+          TUu_ = Str((CLD[17] - CLD[16])*_coordXScheme)
+          TWw_ = Str((CLD[12] - CLD[6]))
+        end
+        else begin      ! fanuc code B,C
+          TUX_ = "X"
+          TWZ_ = "Z"
+          TUu_ = Str(CLD[9]*_coordXScheme)
+          TWw_ = Str(CLD[8])
+          if _fanucCodeSistem = 3 then TGn_ = Str(78)
+        end
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          X = StartPX_
+          Z = StartPZ_
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          X2 = StartPX_
+          Z2 = StartPZ_
+        end
+        OutBlock
+        FormBlock
+        OutPut OutStr$ + "G" + TGn_ + " P" + TPmra_ + " Q" + TQdm_ + " R" + TRd_
+        FormBlock
+        Output OutStr$ + "G" + TGn_ + " " + TUX_ + TUu_ + " " + TWZ_ + TWw_ + " P" + TPk_ + " Q" + TQd_ + " F" + TFl_
+      end
+      if CLD.SubType = 404 then begin    ! G92 (Single-pass threading cycle)
+        _moveIgnore = 1
+        StartPX_ = CLD[7]*_coordXScheme
+        StartPZ_ = CLD[6]
+        TUX_ = "X"
+        TWZ_ = "Z"
+        TUu_ = Str(CLD[9]*_coordXScheme)
+        TWw_ = Str(CLD[8])
+        TFf_ = Str(CLD[23])
+        if Round(CLD[9],3) = Round(CLD[13],3) then TRd_ = ""
+        else TRd_ = " R" + Str(Round(CLD[13]-CLD[9],3))
+        X = StartPX_
+        Z = StartPZ_
+        OutBlock
+        FormBlock
+        Output OutStr$ + "G92" + " " + TUX_ + TUu_ + " " + TWZ_ + TWw_ + TRd_ + " F" + TFf_
+      end
+      end
+    81,153,163,168,288: begin    ! turning drill
+      OutBlock
+      _cycleInWork = 2
+      Q_ = CLD[11]
+      F_ = CLD[9]
+      if CLD[8] = 0 then begin
+        if _fanucCodeSistem = 1 then FType_ = 99
+        else FType_ = 95
+      end
+      else begin
+        if _fanucCodeSistem = 1 then FType_ = 98
+        else FType_ = 94
+      end
+      Z_ = CLD[3] - CLD[4]
+      R_ = CLD[5]
+      if CLD.SubType = 81 or CLD.SubType = 163 then
+        Mask(GFeed[FType_,on] GCycleDrill[81,on] ZCycle[Z_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      else if CLD.SubType = 153 or CLD.SubType = 288 then
+        Mask(GFeed[FType_,on] GCycleDrill[83,on] ZCycle[Z_,on] QCycle[Q_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      else if CLD.SubType = 168 then
+        Mask(GFeed[FType_,on] GCycleDrill[84,on] ZCycle[Z_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      OutPut OutStr$
+      end
+    473,481,482,483,484,485,486,487,488,489: begin   ! milling drill
+      OutBlock
+      _cycleInWork = 3
+      P_ = CLD[15]
+      Q_ = CLD[17]
+      D_ = CLD[19]
+      F_ = CLD[10]
+      if CLD[9] = 0 then begin
+        if _fanucCodeSistem = 1 then FType_ = 99
+        else FType_ = 95
+      end
+      else begin
+        if _fanucCodeSistem = 1 then FType_ = 98
+        else FType_ = 94
+      end
+      if abs(CLD[5]) = 1 then begin   ! G17
+        Plane_ = 17
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          Z_ = Z - CLD[8]
+          R_ = Z - CLD[6]
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          Z_ = Z2 - CLD[8]
+          R_ = Z2 - CLD[6]
+        end
+      end
+      else if abs(CLD[3]) = 1 then begin    ! G19
+        Plane_ = 19
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          X_ = X - (CLD[8]*_coordXScheme)
+          R_ = X - (CLD[6]*_coordXScheme)
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          X_ = X2 - (CLD[8]*_coordXScheme)
+          R_ = X2 - (CLD[6]*_coordXScheme)
+        end
+      end
+      if (CLD.SubType = 473 or CLD.SubType = 483) and Plane_ = 17 then
+        Mask(GFeed[FType_,on] GCycleDrill[83,on] ZCycle[Z_,on] RCycle[R_,on] QCycle[Q_,on] FCycle[F_,on]), FormBlock
+      else if (CLD.SubType = 473 or CLD.SubType = 483) and Plane_ = 19 then
+        Mask(GFeed[FType_,on] GCycleDrill[87,on] XCycle[X_,on] RCycle[R_,on] QCycle[Q_,on] FCycle[F_,on]), FormBlock
+      else if (CLD.SubType = 481 or CLD.SubType = 482 or (CLD.SubType >= 485 and CLD.SubType <= 489)) and Plane_ = 17 then
+        Mask(GFeed[FType_,on] GCycleDrill[85,on] ZCycle[Z_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      else if (CLD.SubType = 481 or CLD.SubType = 482 or (CLD.SubType >= 485 and CLD.SubType <= 489)) and Plane_ = 19 then
+        Mask(GFeed[FType_,on] GCycleDrill[89,on] XCycle[X_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      else if CLD.SubType = 484 and Plane_ = 17 then
+        Mask(GFeed[FType_,on] GCycleDrill[84,on] ZCycle[Z_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      else if CLD.SubType = 484 and Plane_ = 19 then
+        Mask(GCycleDrill[88,on] XCycle[X_,on] RCycle[R_,on] FCycle[F_,on]), FormBlock
+      OutPut OutStr$
+      end
+    490: begin    ! thread mill
+      _inputCode[2] = 1; Call InputMessages
+      end
+    491: begin    ! pocketing
+      _inputCode[2] = 2; Call InputMessages
+      end
+    end
+    end
+  72: begin   ! ExtCycle off
+    if _cycleInWork <> 1 then GCycleDrill = 80
+    OutBlock
+    if CLD.SubType = 404 then GInterp@ = 1
+    if GInterp <> 0 then GInterp = 0
+    _cycleInWork = 0
+    _moveIgnore = 0
+    end
+  end
+end

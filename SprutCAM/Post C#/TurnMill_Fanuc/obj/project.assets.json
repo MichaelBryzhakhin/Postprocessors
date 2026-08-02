@@ -1,0 +1,255 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0-windows7.0": {
+      "SprutTechnology.DotnetPostprocessing.SDK/18.2.0": {
+        "type": "package",
+        "dependencies": {
+          "SprutTechnology.GeneralUtils.STDefLib": "18.2.0",
+          "SprutTechnology.Geometry.VecMatrLib": "18.2.0"
+        },
+        "compile": {
+          "lib/net6.0/DotnetPostprocessing.SDK.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/DotnetPostprocessing.SDK.dll": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/net6.0/DotnetPostprocessing.SDK.stbuildresult.json": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "DotnetPostprocessing.SDK.stbuildresult.json"
+          },
+          "contentFiles/any/net6.0/DotnetPostprocessing.SDK.xml": {
+            "buildAction": "Content",
+            "codeLanguage": "any",
+            "copyToOutput": true,
+            "outputPath": "DotnetPostprocessing.SDK.xml"
+          }
+        }
+      },
+      "SprutTechnology.GeneralUtils.STDefLib/18.2.0": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/GeneralUtils.STDefLib.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "SprutTechnology.Geometry.VecMatrLib/18.2.0": {
+        "type": "package",
+        "dependencies": {
+          "SprutTechnology.GeneralUtils.STDefLib": "18.2.0",
+          "SprutTechnology.STTypes.Net": "18.1.0"
+        },
+        "compile": {
+          "lib/net6.0/Geometry.VecMatrLib.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "contentFiles": {
+          "contentFiles/any/any/_._": {
+            "buildAction": "None",
+            "codeLanguage": "any",
+            "copyToOutput": false
+          }
+        }
+      },
+      "SprutTechnology.STTypes.Net/18.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/STTypes.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/_._": {
+            "related": ".xml"
+          }
+        },
+        "build": {
+          "build/_._": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "SprutTechnology.DotnetPostprocessing.SDK/18.2.0": {
+      "sha512": "+e3VhPOwMhNId2A2hIo1ofWCW0T9EGGPAcOFY4NAMFruU11SSUeUoC1WJP07XrAWuxQLl9jsSzpzkohbRmcP/g==",
+      "type": "package",
+      "path": "spruttechnology.dotnetpostprocessing.sdk/18.2.0",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "content/DotnetPostprocessing.SDK.stbuildresult.json",
+        "content/DotnetPostprocessing.SDK.xml",
+        "contentFiles/any/net6.0/DotnetPostprocessing.SDK.stbuildresult.json",
+        "contentFiles/any/net6.0/DotnetPostprocessing.SDK.xml",
+        "lib/net6.0/DotnetPostprocessing.SDK.dll",
+        "lib/net6.0/DotnetPostprocessing.SDK.xml",
+        "spruttechnology.dotnetpostprocessing.sdk.18.2.0.nupkg.sha512",
+        "spruttechnology.dotnetpostprocessing.sdk.nuspec"
+      ]
+    },
+    "SprutTechnology.GeneralUtils.STDefLib/18.2.0": {
+      "sha512": "XEgT2O9XfYke8Il0dmh8IZY0Me8sEzGQ4tFkFpdb06QHrZw4qa9zvjAS1wmsV5jUKm/mkuW025KDEBCxwjILrQ==",
+      "type": "package",
+      "path": "spruttechnology.generalutils.stdeflib/18.2.0",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "content/GeneralUtils.STDefLib.stbuildresult.json",
+        "content/GeneralUtils.STDefLib.xml",
+        "contentFiles/any/net6.0/GeneralUtils.STDefLib.stbuildresult.json",
+        "contentFiles/any/net6.0/GeneralUtils.STDefLib.xml",
+        "lib/net6.0/GeneralUtils.STDefLib.dll",
+        "lib/net6.0/GeneralUtils.STDefLib.xml",
+        "spruttechnology.generalutils.stdeflib.18.2.0.nupkg.sha512",
+        "spruttechnology.generalutils.stdeflib.nuspec"
+      ]
+    },
+    "SprutTechnology.Geometry.VecMatrLib/18.2.0": {
+      "sha512": "b8GLFu52OS5Zmd4uoqmr4fZ4zc8Ue110QcQ63JzjVwhV1gHMogArqzfgEQ1MOSLs+vLdU6yxON3juuOfd4EoBg==",
+      "type": "package",
+      "path": "spruttechnology.geometry.vecmatrlib/18.2.0",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "content/Geometry.VecMatrLib.stbuildresult.json",
+        "content/Geometry.VecMatrLib.xml",
+        "contentFiles/any/net6.0/Geometry.VecMatrLib.stbuildresult.json",
+        "contentFiles/any/net6.0/Geometry.VecMatrLib.xml",
+        "lib/net6.0/Geometry.VecMatrLib.dll",
+        "lib/net6.0/Geometry.VecMatrLib.xml",
+        "spruttechnology.geometry.vecmatrlib.18.2.0.nupkg.sha512",
+        "spruttechnology.geometry.vecmatrlib.nuspec"
+      ]
+    },
+    "SprutTechnology.STTypes.Net/18.1.0": {
+      "sha512": "J1hqaFeNIgugf4lsMBH0T5odDzEHnPOUCOV0Z6jzel5pOyXGmV3YYaoaiu5sWzwxSNvoLyYp0UjIQfHZyXW/bA==",
+      "type": "package",
+      "path": "spruttechnology.sttypes.net/18.1.0",
+      "files": [
+        ".nupkg.metadata",
+        "LICENSE.md",
+        "build/STTypes.xml",
+        "build/SprutTechnology.STTypes.Net.targets",
+        "lib/netstandard2.0/STTypes.dll",
+        "lib/netstandard2.0/STTypes.xml",
+        "spruttechnology.sttypes.net.18.1.0.nupkg.sha512",
+        "spruttechnology.sttypes.net.nuspec",
+        "stbuild/STTypes.stbuildresult.json"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0-windows7.0": [
+      "SprutTechnology.DotnetPostprocessing.SDK >= 18.2.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "c:\\MyPostprocessors\\SprutCAM\\C#\\_Templates\\TurnMill_Fanuc\\TurnMill_Fanuc.csproj",
+      "projectName": "TurnMill_Fanuc",
+      "projectPath": "c:\\MyPostprocessors\\SprutCAM\\C#\\_Templates\\TurnMill_Fanuc\\TurnMill_Fanuc.csproj",
+      "packagesPath": "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\",
+      "outputPath": "c:\\MyPostprocessors\\SprutCAM\\C#\\_Templates\\TurnMill_Fanuc\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\bryzhakhin_me\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0-windows"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {},
+        "https://nexus.sprut.ru/repository/master/index.json": {}
+      },
+      "frameworks": {
+        "net8.0-windows7.0": {
+          "targetAlias": "net8.0-windows",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      },
+      "SdkAnalysisLevel": "9.0.300"
+    },
+    "frameworks": {
+      "net8.0-windows7.0": {
+        "targetAlias": "net8.0-windows",
+        "dependencies": {
+          "SprutTechnology.DotnetPostprocessing.SDK": {
+            "target": "Package",
+            "version": "[18.2.0, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[8.0.20, 8.0.20]"
+          }
+        ],
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

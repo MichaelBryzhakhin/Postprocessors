@@ -1,0 +1,152 @@
+program Circle
+  _inputCode[1] = Cmd.Code
+  Tang_: Real
+  AxisCValue_: Real
+  CurX_: Real; CurX_ = CLD.Xe
+  CurY_: Real; CurY_ = CLD.Ye
+  
+  if CLD.R > 0 then GInterp = 3
+  else GInterp = 2
+  case _stateOperation of
+  1: begin   ! milling
+    if _polarInterp = 1 then begin
+      if CLD.Xe <> 0 then Tang_ = abs(CLD.Ye/CLD.Xe)
+      else Tang_ = abs(CLD.Ye/1)
+      AxisCValue_ = Round(Atn(Tang_),3)*_axisCCoef
+      Call AxisCPolarCompens(CurX_, CurY_, AxisCValue_)            ! Axis C compensation while polar interp is active
+      if _multiAxisInWork = "Axes(AxisCPos)" then begin
+        while AxisCValue_ < _axisCMin do
+          AxisCValue_ = AxisCValue_ + (_pi2*_rad2Deg)
+        while AxisCValue_ > _axisCMax do
+          AxisCValue_ = AxisCValue_ - (_pi2*_rad2Deg)
+        C = AxisCValue_
+      end
+      else begin
+        while AxisCValue_ < _axisC2Min do
+          AxisCValue_ = AxisCValue_ + (_pi2*_rad2Deg)
+        while AxisCValue_ > _axisC2Max do
+          AxisCValue_ = AxisCValue_ - (_pi2*_rad2Deg)
+        C2 = AxisCValue_
+      end
+      if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+        if _polarInterpIgnore = 1 then
+          X = Sqr(CLD.Xe^2 + CLD.Ye^2)*_coordXScheme    ! when G12.1 is not printed in prog
+        else X = Sqr(CLD.Xe^2 + CLD.Ye^2)
+        Z = CLD.Ze
+        if _circleInterpType = 1 then R = Abs(CLD.R)
+        else begin
+          I = CLD.XcInc; I@ = _maxReal
+          J = CLD.YcInc; J@ = _maxReal
+        end
+      end
+      else if _operationRevolverID = _turretSpindlRevID then begin
+        if _polarInterpIgnore = 1 then
+          X2 = Sqr(CLD.Xe^2 + CLD.Ye^2)*_coordXScheme    ! when G12.1 is not printed in prog
+        else X2 = Sqr(CLD.Xe^2 + CLD.Ye^2)
+        Z2 = CLD.Ze
+        if _circleInterpType = 1 then R = Abs(CLD.R)
+        else begin
+          I2 = CLD.XcInc; I2@ = _maxReal
+          J2 = CLD.YcInc; J2@ = _maxReal
+        end
+      end
+    end
+    else if _cylinderInterp = 1 then begin
+      !C = Round(180*Y/CylInterp/3.141592, 3)
+    end
+    else begin
+      if GPlane = 17 then begin
+        GPlane = 17
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          X = (CLD.Xe)*_coordXScheme
+          if _machineKinematic = 2 then Y = CLD.Ye
+          else if CLD.Ye <> 0 then call InputMessages
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            I = (CLD.XcInc)*_coordXScheme; I@ = _maxReal
+            J = CLD.YcInc; J@ = _maxReal
+          end
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          X2 = (CLD.Xe)*_coordXScheme
+          if _machineKinematic = 2 then Y2 = CLD.Ye
+          else if CLD.Ye <> 0 then call InputMessages
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            I2 = (CLD.XcInc)*_coordXScheme; I2@ = _maxReal
+            J2 = CLD.YcInc; J2@ = _maxReal
+          end
+        end
+      end
+      else if GPlane = 18 then begin
+        GPlane = 18
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          X = (CLD.Xe)*_coordXScheme
+          Z = CLD.Ze
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            I = (CLD.YcInc)*_coordXScheme; I@ = _maxReal
+            K = CLD.ZcInc; K@ = _maxReal
+          end
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          X2 = (CLD.Xe)*_coordXScheme
+          Z2 = CLD.Ze
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            I2 = (CLD.YcInc)*_coordXScheme; I2@ = _maxReal
+            K2 = CLD.ZcInc; K2@ = _maxReal
+          end
+        end
+      end
+      else if GPlane = 19 then begin
+        GPlane = 19
+        if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+          if _machineKinematic = 2 then Y = CLD.Ye
+          else if CLD.Ye <> 0 then call InputMessages
+          Z = CLD.Ze
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            J = CLD.YcInc; J@ = _maxReal
+            K = CLD.ZcInc; K@ = _maxReal
+          end
+        end
+        else if _operationRevolverID = _turretSpindlRevID then begin
+          if _machineKinematic = 2 then Y2 = CLD.Ye
+          else if CLD.Ye <> 0 then call InputMessages
+          Z2 = CLD.Ze
+          if _circleInterpType = 1 then R = Abs(CLD.R)
+          else begin
+            J2 = CLD.YcInc; J2@ = _maxReal
+            K2 = CLD.ZcInc; K2@ = _maxReal
+          end
+        end
+      end
+    end
+    end
+  2: begin   ! turning
+    GPlane = 18
+    if Copy(_operationRevolverID,1,4) = _headSpindlRevID then begin
+      X = (CLD.Xe)*_coordXScheme
+      Z = CLD.Ze
+      if _circleInterpType = 1 then R = Abs(CLD.R)
+      else begin
+        I = (CLD.XcInc)*_coordXScheme; I@ = _maxReal
+        K = CLD.ZcInc; K@ = _maxReal
+      end
+    end
+    else if _operationRevolverID = _turretSpindlRevID then begin
+      X2 = (CLD.Xe)*_coordXScheme
+      Z2 = CLD.Ze
+      if _circleInterpType = 1 then R = Abs(CLD.R)
+      else begin
+        I2 = (CLD.XcInc)*_coordXScheme; I2@ = _maxReal
+        K2 = CLD.ZcInc; K2@ = _maxReal
+      end
+    end
+    end
+  end
+  OutBlock
+  _previousX = CLD.Xe
+  _previousY = CLD.Ye
+end

@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "KedKmg8ajIc=",
+  "success": true,
+  "projectFilePath": "C:\\MyPostprocessors\\SprutCAM\\C#\\_Templates\\TurnMill_Fanuc\\TurnMill_Fanuc.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\spruttechnology.dotnetpostprocessing.sdk\\18.2.0\\spruttechnology.dotnetpostprocessing.sdk.18.2.0.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\spruttechnology.generalutils.stdeflib\\18.2.0\\spruttechnology.generalutils.stdeflib.18.2.0.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\spruttechnology.geometry.vecmatrlib\\18.2.0\\spruttechnology.geometry.vecmatrlib.18.2.0.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\spruttechnology.sttypes.net\\18.1.0\\spruttechnology.sttypes.net.18.1.0.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.20\\microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.20\\microsoft.windowsdesktop.app.ref.8.0.20.nupkg.sha512",
+    "C:\\Users\\bryzhakhin_me\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.20\\microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
+  ],
+  "logs": []
+}

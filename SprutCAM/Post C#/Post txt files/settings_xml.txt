@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<?xml-model href="PostSchema.xsd"?>
+
+<Settings Version="1.0">
+    <Description>
+        <Comments />
+        <CNCSystem>FANUC</CNCSystem>
+        <MachineName>FANUC</MachineName>
+        <!--Authors>Ascon Ural</Authors-->
+    </Description>
+    <Common>
+        <!-- No, Cuts, Halfs, Quaters -->
+        <BreakArcs>No</BreakArcs>
+        <!-- false, true -->
+        <BreakHelix>false</BreakHelix>
+        <ArcTolerance>0.01</ArcTolerance>
+        <MaxCircleRadius>0</MaxCircleRadius>
+        <DecimalSeparator>.</DecimalSeparator>
+        <SkipLoadTLIfNoToolChange>false</SkipLoadTLIfNoToolChange>
+    </Common>
+    <UserDefinedParameters>
+        <Group ID="OutFiles" Caption="$(OutputFiles)">
+            <Parameter ID="NCFileName" Caption="$(NCFileName)" Type="FileName" />
+            <Parameter ID="NCProgName" Caption="Program name" Type="String" />
+            <Parameter ID="PartName" Caption="Part name" Type="FileName" />
+            <Parameter ID="Programmer" Caption="Programmer" Type="String" />
+        </Group>
+        <Parameter ID="CircleTypeOut" Caption="Circle interp. format" Type="Integer" >
+            <Value Caption="R" >1</Value> 
+            <Value Caption="IJK" Default="true" >2</Value>
+        </Parameter>
+    </UserDefinedParameters>
+</Settings>

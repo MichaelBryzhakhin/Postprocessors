@@ -1,0 +1,74 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TurnMill_Fanuc/1.0.0": {
+        "dependencies": {
+          "SprutTechnology.DotnetPostprocessing.SDK": "18.2.0"
+        },
+        "runtime": {
+          "TurnMill_Fanuc.dll": {}
+        }
+      },
+      "SprutTechnology.DotnetPostprocessing.SDK/18.2.0": {
+        "dependencies": {
+          "SprutTechnology.GeneralUtils.STDefLib": "18.2.0",
+          "SprutTechnology.Geometry.VecMatrLib": "18.2.0"
+        },
+        "runtime": {
+          "lib/net6.0/DotnetPostprocessing.SDK.dll": {
+            "assemblyVersion": "18.2.0.0",
+            "fileVersion": "18.2.0.0"
+          }
+        }
+      },
+      "SprutTechnology.GeneralUtils.STDefLib/18.2.0": {},
+      "SprutTechnology.Geometry.VecMatrLib/18.2.0": {
+        "dependencies": {
+          "SprutTechnology.GeneralUtils.STDefLib": "18.2.0",
+          "SprutTechnology.STTypes.Net": "18.1.0"
+        }
+      },
+      "SprutTechnology.STTypes.Net/18.1.0": {}
+    }
+  },
+  "libraries": {
+    "TurnMill_Fanuc/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "SprutTechnology.DotnetPostprocessing.SDK/18.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-+e3VhPOwMhNId2A2hIo1ofWCW0T9EGGPAcOFY4NAMFruU11SSUeUoC1WJP07XrAWuxQLl9jsSzpzkohbRmcP/g==",
+      "path": "spruttechnology.dotnetpostprocessing.sdk/18.2.0",
+      "hashPath": "spruttechnology.dotnetpostprocessing.sdk.18.2.0.nupkg.sha512"
+    },
+    "SprutTechnology.GeneralUtils.STDefLib/18.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XEgT2O9XfYke8Il0dmh8IZY0Me8sEzGQ4tFkFpdb06QHrZw4qa9zvjAS1wmsV5jUKm/mkuW025KDEBCxwjILrQ==",
+      "path": "spruttechnology.generalutils.stdeflib/18.2.0",
+      "hashPath": "spruttechnology.generalutils.stdeflib.18.2.0.nupkg.sha512"
+    },
+    "SprutTechnology.Geometry.VecMatrLib/18.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-b8GLFu52OS5Zmd4uoqmr4fZ4zc8Ue110QcQ63JzjVwhV1gHMogArqzfgEQ1MOSLs+vLdU6yxON3juuOfd4EoBg==",
+      "path": "spruttechnology.geometry.vecmatrlib/18.2.0",
+      "hashPath": "spruttechnology.geometry.vecmatrlib.18.2.0.nupkg.sha512"
+    },
+    "SprutTechnology.STTypes.Net/18.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-J1hqaFeNIgugf4lsMBH0T5odDzEHnPOUCOV0Z6jzel5pOyXGmV3YYaoaiu5sWzwxSNvoLyYp0UjIQfHZyXW/bA==",
+      "path": "spruttechnology.sttypes.net/18.1.0",
+      "hashPath": "spruttechnology.sttypes.net.18.1.0.nupkg.sha512"
+    }
+  }
+}
