@@ -4,3 +4,4 @@
 
 The folders contain examples of post‑processors I developed for two different CAM systems.
 In addition to the main post‑processor files, there are also text documents with the internal code and algorithms attached — they’re included to demonstrate the syntax of the post‑processing languages.
+The purpose of a postprocessor is to convert the program from the CAM system’s language (CLData file) into the control language for the machine or robot.
